@@ -1,0 +1,146 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #121212;
+    color: #eee;
+}
+
+header {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container nav a {
+    color: #eee;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.header-container nav a:hover {
+    color: #ff3b3f;
+}
+
+.logo {
+    height: 40px;
+}
+
+main {
+    padding: 20px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 20px;
+}
+
+.video {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+h1, h2, h3, h4 {
+    margin: 10px 0 5px;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background-color: #1f1f1f;
+    padding: 25px 30px;
+    border-radius: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 15px 0;
+    background-color: #2a2a2a;
+    border: none;
+    border-radius: 5px;
+    color: #eee;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+button, .btn-submit, .btn-follow, .btn-unfollow, .btn-like, .btn-dislike, .btn-delete {
+    background-color: #ff3b3f;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+button:hover,
+.btn-submit:hover,
+.btn-follow:hover,
+.btn-unfollow:hover,
+.btn-like:hover,
+.btn-dislike:hover,
+.btn-delete:hover {
+    background-color: #e23135;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ff3b3f;
+}
+
+.update-profile-form input[type="text"],
+.update-profile-form textarea {
+    margin-top: 10px;
+}
+
+.flashes {
+    list-style: none;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 500px;
+    border-radius: 5px;
+    background-color: #ff3b3f;
+    color: white;
+}
+
+.flashes li {
+    margin-bottom: 5px;
+}

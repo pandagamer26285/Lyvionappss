@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Subir Video{% endblock %}
+{% block content %}
+<div class="form-container">
+    <h2>Subir un nuevo video</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*" required />
+        <button type="submit">Subir</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Perfil de {{ username }}{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="{{ url_for('static', filename='profile_pics/' + (user.profile_pic or 'default.png')) }}" alt="Foto de perfil" class="profile-pic" />
+        <h2>{{ username }}</h2>
+        <p>{{ user.description }}</p>
+
+        {% if not is_own %}
+            <form method="POST">
+                {% if is_following %}
+                    <button type="submit" name="action" value="unfollow" class="btn-unfollow">Dejar de seguir</button>
+                {% else %}
+                    <button type="submit" name="action" value="follow" class="btn-follow">Seguir</button>
+                {% endif %}
+            </form>
+        {% endif %}
+
+        {% if is_own %}
+            <form method="POST" class="update-profile-form">
+                <input type="text" name="username" value="{{ username }}" required />
+                <textarea name="description" placeholder="Descripción">{{ user.description }}</textarea>
+                <button type="submit" name="action" value="update_profile" class="btn-submit">Actualizar perfil</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <h3>Videos subidos</h3>
+    <div class="videos">
+        {% for vid in user_videos %}
+            <div class="video">
+                <video controls>
+                    <source src="{{ url_for('uploaded_file', filename=vid.filename) }}" type="video/mp4" />
+                </video>
+                <h4>{{ vid.title }}</h4>
+                <p>
+                    <a href="{{ url_for('like_video', video_id=vid.id) }}" class="btn-like">👍 {{ vid.likes }}</a>
+                    <a href="{{ url_for('dislike_video', video_id=vid.id) }}" class="btn-dislike">👎 {{ vid.dislikes }}</a>
+                </p>
+                {% if is_own %}
+                <form method="POST" onsubmit="return confirm('¿Seguro que quieres borrar este video?');">
+                    <input type="hidden" name="video_id" value="{{ vid.id }}" />
+                    <button type="submit" name="action" value="delete_video" class="btn-delete">Eliminar video</button>
+                </form>
+                {% endif %}
+            </div>
+        {% else %}
+            <p>No hay videos subidos.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

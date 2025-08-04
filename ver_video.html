@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ video.titulo }}{% endblock %}
+{% block content %}
+<h2>{{ video.titulo }}</h2>
+<video src="{{ url_for('videos', filename=video.filename) }}" controls width="720"></video>
+<p>Subido por <a href="{{ url_for('perfil', username=video.autor.username) }}">{{ video.autor.username }}</a></p>
+<p>Vistas: {{ video.views }}</p>
+<p>{{ video.descripcion }}</p>
+{% endblock %}

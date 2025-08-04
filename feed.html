@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Feed{% endblock %}
+{% block content %}
+<h1>Feed de Videos</h1>
+{% if videos %}
+    <ul>
+    {% for video in videos %}
+        <li>
+            <a href="{{ url_for('video_player', video_id=video.id) }}">{{ video.title }}</a>
+            <br>
+            Subido por: <a href="{{ url_for('profile', username=video.owner.username) }}">{{ video.owner.username }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay videos para mostrar. Sigue a usuarios para ver sus videos.</p>
+{% endif %}
+{% endblock %}

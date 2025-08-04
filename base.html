@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}ApplyVion Videos{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Lyvion" class="logo" /></a>
+            <nav>
+                <a href="{{ url_for('index') }}">Inicio</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('upload') }}">Subir Video</a>
+                    <a href="{{ url_for('profile', username=users[current_user.id]['username']) }}">Mi Perfil</a>
+                    <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Iniciar Sesión</a>
+                    <a href="{{ url_for('register') }}">Registrarse</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 ApplyVion Videos - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
